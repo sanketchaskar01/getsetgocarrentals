@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Form</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/booking.css' %}">
+</head>
+<body>
+    {% include 'navbar.html' %}
+
+    <h2 style="text-align: center;">Vehicle Booking Form</h2>
+    <form action="{% url 'create_order' %}" method="POST">
+        {% csrf_token %}
+        <table border="2">
+            <tr>
+                <th>Booking Name</th>
+                <td><input type="text" name="user" required></td>
+            </tr>
+            <tr>
+                <th>Contact</th>
+                <td><input type="tel" name="contact" required></td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td><input type="email" name="email" required></td>
+            </tr>
+            <tr>
+                <th>Vehicle</th>
+                <td>
+                    <input type="text" name="vehicle_name" value="{{ vehicle.v_name }} {{ vehicle.v_model }}" readonly>
+                    <input type="hidden" name="vehicle_id" value="{{ vehicle.id }}">
+                </td>
+            </tr>
+            <tr>
+                <th>Trip Date</th>
+                <td><input type="date" name="trip_date" required></td>
+            </tr>
+            <tr>
+                <th>Return Date</th>
+                <td><input type="date" name="return_date" required></td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center;">
+                    <input type="submit" value="Book Now">
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

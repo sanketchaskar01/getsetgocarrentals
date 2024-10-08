@@ -1,0 +1,64 @@
+.bg{
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+
+.logo{
+    font-family: "Rubik Mono One", monospace;
+    font-weight: 100;
+    /* font-style: normal; */
+    font-size:small;
+    margin-top: 15px;
+}
+
+.wrapper{
+    position: relative;
+    max-width: 430px;
+    width: 100%;
+    background: #fff;
+    padding: 34px;
+    border-radius: 6px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+}
+
+/* General Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    color: #333; /* Adjust color as needed */
+    background-color: #f8f9fa; /* Adjust background color as needed */
+}
+
+/* Navbar Styles */
+.navbar {
+    background-color: #343a40; /* Navbar background color */
+    color: #ffffff; /* Navbar text color */
+}
+
+.nav-link {
+    color: #ffffff; /* Link color */
+}
+
+.nav-link.active {
+    color: #007bff; /* Active link color */
+}
+
+/* Card Styles */
+.card {
+    border: 1px solid #dee2e6; /* Card border color */
+    border-radius: .25rem; /* Card border radius */
+}
+
+.card-body {
+    padding: 1.25rem; /* Card body padding */
+}
+
+.card-text {
+    color: #495057; /* Card text color */
+}
+
+.card-footer {
+    background-color: #f8f9fa; /* Card footer background color */
+}

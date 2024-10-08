@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignUp</title>
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+    <script>
+        function validateForm() {
+    var username = document.forms["signupForm"]["username"].value;
+    var contactNumber = document.forms["signupForm"]["contact_number"].value;
+
+    var usernamePattern = /^[a-zA-Z]+$/; 
+    var contactNumberPattern = /^[0-9]+$/; 
+
+    if (!username) {
+        alert("Username cannot be empty.");
+        return false;
+    }
+    if (!usernamePattern.test(username)) {
+        alert("Username must contain only alphabetic characters.");
+        return false;
+    }
+    if (!contactNumber) {
+        alert("Contact number cannot be empty.");
+        return false;
+    }
+    if (!contactNumberPattern.test(contactNumber)) {
+        alert("Contact number must contain only numeric characters.");
+        return false;
+    }
+
+    return true;
+}
+    </script>
+</head>
+<body>
+    <div class="background-blur">
+        <div class="signup-container">
+            <h1>SignUp</h1>
+
+            {% if error_message %}
+            <p style="color: red;">{{ error_message }}</p>
+            {% endif %}
+
+            <form name="signupForm" action="" method="post" onsubmit="return validateForm();">
+                {% csrf_token %}
+                <table class="table">
+                    <tr>
+                        <td>Username:</td>
+                        <td><input type="text" name="username" class="form-control" required></td>
+                    </tr>
+                    <tr>
+                        <td>Email:</td>
+                        <td><input type="email" name="email" class="form-control" required></td>
+                    </tr>
+                    <tr>
+                        <td>Password:</td>
+                        <td><input type="password" name="password1" class="form-control" required></td>
+                    </tr>
+                    <tr>
+                        <td>Confirm Password:</td>
+                        <td><input type="password" name="password2" class="form-control" required></td>
+                    </tr>
+                    <tr>
+                        <td><input type="submit" value="Sign Up" class="btn btn-primary"></td>
+                        <td><input type="reset" value="Reset" class="btn btn-secondary"></td>
+                    </tr>
+                </table>
+            </form>
+
+            <div class="already-member">
+                <p>Already a member? <a href="{% url 'login' %}">Login here</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

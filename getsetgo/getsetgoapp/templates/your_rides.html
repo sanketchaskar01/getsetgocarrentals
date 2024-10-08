@@ -1,0 +1,33 @@
+{% include 'navbar.html' %}
+{%load static%}
+<h1>Your Rides</h1>
+<hr>
+
+{% if bookings %}
+    <div class="album py-5 bg-body-tertiary">
+        <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                {% for booking in bookings %}
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img src="{{ booking.vehicle.img.url }}" alt="Image not available" class="card-img-top" style="height: 250px; object-fit: cover;">  <!-- Add vehicle image -->
+                        <div class="card-body">
+                            <p class="card-text">Booking id: {{ booking.id }}</p>
+                            <p class="card-text" style="font-weight: bold;">Vehicle: {{ booking.vehicle.v_name }} {{ booking.vehicle.v_model }}</p>
+                            <p class="card-text">Category: {{ booking.vehicle.v_category.name }}</p>
+                            <p class="card-text">Fuel Type: {{ booking.vehicle.v_fueltype }}</p>
+                            <p class="card-text">Rate: {{ booking.vehicle.v_rate }}/Day</p>
+                            <p class="card-text">Booking Date: {{ booking.trip_date }}</p>
+                            <p class="card-text">Return Date: {{ booking.return_date }}</p>
+                            <p class="card-text">Payment id: {{ booking.payment_id }}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% else %}
+    <p>No rides booked yet.</p>
+{% endif %}
+<hr>
